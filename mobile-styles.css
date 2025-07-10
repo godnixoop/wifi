@@ -1,0 +1,826 @@
+/* Mobile-optimized styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: linear-gradient(135deg, #000000 0%, #0a0a2e 30%, #000000 60%, #0a0a2e 90%, #000000 100%);
+    color: #ffffff;
+    overflow: hidden;
+    height: 100vh;
+    height: 100dvh; /* Dynamic viewport height for mobile */
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    touch-action: manipulation;
+}
+
+.mobile-container {
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: radial-gradient(circle at center, rgba(10, 10, 46, 0.4) 0%, rgba(0, 0, 0, 0.9) 60%, #000000 100%);
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+
+/* Mobile background with fewer glitter elements for performance */
+.mobile-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.mobile-glitter {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    animation: mobileGlitter 6s infinite linear;
+}
+
+.mobile-glitter:nth-child(1) { top: 10%; left: 20%; animation-delay: 0s; }
+.mobile-glitter:nth-child(2) { top: 30%; left: 70%; animation-delay: 0.8s; }
+.mobile-glitter:nth-child(3) { top: 50%; left: 10%; animation-delay: 1.6s; }
+.mobile-glitter:nth-child(4) { top: 70%; left: 80%; animation-delay: 2.4s; }
+.mobile-glitter:nth-child(5) { top: 20%; left: 50%; animation-delay: 3.2s; }
+.mobile-glitter:nth-child(6) { top: 60%; left: 30%; animation-delay: 4s; }
+.mobile-glitter:nth-child(7) { top: 80%; left: 60%; animation-delay: 4.8s; }
+.mobile-glitter:nth-child(8) { top: 40%; left: 90%; animation-delay: 5.6s; }
+.mobile-glitter:nth-child(9) { top: 15%; left: 40%; animation-delay: 6.4s; }
+.mobile-glitter:nth-child(10) { top: 85%; left: 25%; animation-delay: 7.2s; }
+
+@keyframes mobileGlitter {
+    0% {
+        opacity: 0;
+        transform: scale(0) rotate(0deg);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1) rotate(180deg);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0) rotate(360deg);
+    }
+}
+
+/* Mobile shooting stars */
+.mobile-shooting-stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.mobile-shooting-star {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: linear-gradient(45deg, #4a90e2, #ffffff, #87ceeb);
+    border-radius: 50%;
+    animation: mobileShootingStar 5s linear infinite;
+    box-shadow: 
+        0 0 10px #4a90e2,
+        0 0 20px #4a90e2,
+        0 0 30px #87ceeb,
+        0 0 40px rgba(135, 206, 235, 0.6);
+}
+
+.mobile-shooting-star-trail {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #4a90e2, #ffffff);
+    transform: translate(-50%, -50%);
+    border-radius: 2px;
+    box-shadow: 0 0 6px #4a90e2;
+}
+
+.mobile-shooting-star:nth-child(1) { top: 25%; left: 15%; animation-delay: 0s; animation-duration: 4s; }
+.mobile-shooting-star:nth-child(2) { top: 35%; left: 25%; animation-delay: 1.5s; animation-duration: 5s; }
+.mobile-shooting-star:nth-child(3) { top: 45%; left: 35%; animation-delay: 3s; animation-duration: 4.5s; }
+.mobile-shooting-star:nth-child(4) { top: 55%; left: 45%; animation-delay: 4.5s; animation-duration: 5.5s; }
+.mobile-shooting-star:nth-child(5) { top: 65%; left: 55%; animation-delay: 6s; animation-duration: 4s; }
+
+@keyframes mobileShootingStar {
+    0% {
+        transform: translateX(-100px) translateY(0) rotate(45deg);
+        opacity: 0;
+    }
+    15% {
+        opacity: 1;
+    }
+    85% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(calc(100vw + 100px)) translateY(calc(100vh + 100px)) rotate(45deg);
+        opacity: 0;
+    }
+}
+
+/* Mobile floating particles */
+.mobile-floating-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.mobile-particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: rgba(135, 206, 235, 0.7);
+    border-radius: 50%;
+    animation: mobileFloatParticle 15s ease-in-out infinite;
+}
+
+.mobile-particle:nth-child(1) { top: 25%; left: 15%; animation-delay: 0s; }
+.mobile-particle:nth-child(2) { top: 65%; left: 75%; animation-delay: 3s; }
+.mobile-particle:nth-child(3) { top: 45%; left: 35%; animation-delay: 6s; }
+.mobile-particle:nth-child(4) { top: 75%; left: 65%; animation-delay: 9s; }
+.mobile-particle:nth-child(5) { top: 35%; left: 55%; animation-delay: 12s; }
+.mobile-particle:nth-child(6) { top: 85%; left: 25%; animation-delay: 1.5s; }
+
+@keyframes mobileFloatParticle {
+    0%, 100% {
+        opacity: 0.4;
+        transform: translateY(0px) translateX(0px);
+    }
+    25% {
+        opacity: 0.9;
+        transform: translateY(-25px) translateX(15px);
+    }
+    50% {
+        opacity: 0.6;
+        transform: translateY(-15px) translateX(-8px);
+    }
+    75% {
+        opacity: 1;
+        transform: translateY(-35px) translateX(20px);
+    }
+}
+
+/* Mobile content */
+.mobile-content {
+    text-align: center;
+    z-index: 2;
+    position: relative;
+    width: 100%;
+    max-width: 350px;
+    padding: 2rem 1rem;
+}
+
+/* Mobile WiFi icon */
+.mobile-wifi-icon {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: mobileFloat 4s ease-in-out infinite;
+}
+
+@keyframes mobileFloat {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+}
+
+.mobile-wave {
+    position: absolute;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    animation: mobilePulse 2.5s ease-in-out infinite;
+}
+
+.mobile-wave:nth-child(1) {
+    width: 35px;
+    height: 35px;
+    animation-delay: 0s;
+}
+
+.mobile-wave:nth-child(2) {
+    width: 50px;
+    height: 50px;
+    animation-delay: 0.4s;
+}
+
+.mobile-wave:nth-child(3) {
+    width: 65px;
+    height: 65px;
+    animation-delay: 0.8s;
+}
+
+@keyframes mobilePulse {
+    0% {
+        opacity: 0;
+        transform: scale(0.7);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.3);
+    }
+}
+
+/* Mobile center .xilk logo in WiFi icon */
+.mobile-wifi-center-xilk {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.15rem;
+    z-index: 10;
+    animation: mobileCenterXilkPulse 2.5s ease-in-out infinite;
+}
+
+.mobile-center-xilk-triangle {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 8px solid #00ff00;
+    animation: mobileCenterTriangleGlow 2.5s ease-in-out infinite;
+}
+
+.mobile-center-xilk-text {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #00ff00;
+    letter-spacing: 0.4px;
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.7);
+    animation: mobileCenterTextGlow 2.5s ease-in-out infinite;
+}
+
+@keyframes mobileCenterXilkPulse {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.8;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.15);
+        opacity: 1;
+    }
+}
+
+@keyframes mobileCenterTriangleGlow {
+    0%, 100% {
+        filter: brightness(1);
+        transform: scale(1);
+    }
+    50% {
+        filter: brightness(1.5);
+        transform: scale(1.15);
+    }
+}
+
+@keyframes mobileCenterTextGlow {
+    0%, 100% {
+        opacity: 0.7;
+        text-shadow: 0 0 10px rgba(0, 255, 0, 0.7);
+    }
+    50% {
+        opacity: 1;
+        text-shadow: 0 0 15px rgba(0, 255, 0, 0.9);
+    }
+}
+
+/* Mobile typography */
+.mobile-title {
+    font-size: 2.8rem;
+    font-weight: 300;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(45deg, #ffffff, #cccccc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: mobileTitleGlow 3s ease-in-out infinite alternate;
+    line-height: 1.1;
+}
+
+@keyframes mobileTitleGlow {
+    0% { filter: brightness(1); }
+    100% { filter: brightness(1.3); }
+}
+
+.mobile-subtitle {
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 3rem;
+    letter-spacing: 0.5px;
+    line-height: 1.4;
+}
+
+/* Mobile connect button */
+.mobile-button-container {
+    margin-bottom: 2rem;
+}
+
+.mobile-connect-button {
+    position: relative;
+    background: linear-gradient(135deg, #333333, #000000);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 60px;
+    padding: 1.2rem 2.5rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #ffffff;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    min-width: 200px;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-connect-button:active {
+    transform: scale(0.95);
+    background: linear-gradient(135deg, #444444, #111111);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.mobile-button-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+}
+
+.mobile-button-text {
+    font-weight: 600;
+}
+
+.mobile-button-icon {
+    font-size: 1.4rem;
+    animation: mobileIconPulse 2s ease-in-out infinite;
+}
+
+@keyframes mobileIconPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* Mobile status */
+.mobile-status {
+    margin-top: 2rem;
+    padding: 1rem;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: all 0.3s ease;
+}
+
+.mobile-status.success {
+    background: rgba(0, 255, 0, 0.15);
+    border-color: rgba(0, 255, 0, 0.4);
+}
+
+.mobile-status.error {
+    background: rgba(255, 0, 0, 0.15);
+    border-color: rgba(255, 0, 0, 0.4);
+}
+
+.mobile-status-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+}
+
+.mobile-status-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    animation: mobileStatusPulse 1.5s ease-in-out infinite;
+}
+
+.mobile-status.success .mobile-status-icon {
+    background: #00ff00;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+}
+
+.mobile-status.error .mobile-status-icon {
+    background: #ff0000;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+}
+
+@keyframes mobileStatusPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.1); }
+}
+
+/* Mobile modal */
+.mobile-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    backdrop-filter: blur(20px);
+    transition: all 0.3s ease;
+    padding: 1rem;
+}
+
+.mobile-modal-content {
+    background: linear-gradient(135deg, #111111, #000000);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 320px;
+    text-align: center;
+    animation: mobileModalSlideIn 0.4s ease;
+}
+
+@keyframes mobileModalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.mobile-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.mobile-modal-header h3 {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.mobile-close-btn {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+.mobile-close-btn:active {
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.mobile-device-info {
+    margin-bottom: 2rem;
+}
+
+.mobile-info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-info-row:last-child {
+    border-bottom: none;
+}
+
+.mobile-label {
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.95rem;
+}
+
+.mobile-value {
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.95rem;
+    text-align: right;
+    max-width: 60%;
+    word-break: break-word;
+}
+
+.mobile-confirm-button {
+    position: relative;
+    background: linear-gradient(135deg, #00ff00, #00cc00);
+    border: none;
+    border-radius: 30px;
+    padding: 1rem 2rem;
+    color: #000000;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 100%;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-confirm-button:active {
+    transform: scale(0.95);
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.4);
+}
+
+.mobile-confirm-glow {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.6s;
+}
+
+.mobile-confirm-button:active .mobile-confirm-glow {
+    left: 100%;
+}
+
+/* Mobile hint */
+.mobile-hint {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.6rem;
+    z-index: 2;
+}
+
+.mobile-hint-dot {
+    width: 8px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    animation: mobileHintBounce 2s ease-in-out infinite;
+}
+
+.mobile-hint-dot:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.mobile-hint-dot:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+@keyframes mobileHintBounce {
+    0%, 100% {
+        transform: translateY(0);
+        opacity: 0.4;
+    }
+    50% {
+        transform: translateY(-12px);
+        opacity: 1;
+    }
+}
+
+/* Mobile .xilk logo */
+.mobile-xilk-logo {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    z-index: 10;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.mobile-xilk-triangle {
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 15px solid #00ff00;
+    animation: mobileTriangleGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes mobileTriangleGlow {
+    0% {
+        filter: brightness(1);
+        transform: scale(1);
+    }
+    100% {
+        filter: brightness(1.4);
+        transform: scale(1.15);
+    }
+}
+
+.mobile-xilk-text {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #00ff00;
+    letter-spacing: 0.8px;
+    text-shadow: 0 0 15px rgba(0, 255, 0, 0.6);
+}
+
+/* Mobile safe area */
+.mobile-safe-area {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 1;
+    background: linear-gradient(to bottom, 
+        rgba(0,0,0,0.3) 0%, 
+        transparent 10%, 
+        transparent 90%, 
+        rgba(0,0,0,0.3) 100%);
+}
+
+/* Utility classes */
+.hidden {
+    display: none !important;
+}
+
+/* Mobile loading animation */
+.mobile-loading {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #ffffff;
+    animation: mobileSpin 1s ease-in-out infinite;
+}
+
+@keyframes mobileSpin {
+    to { transform: rotate(360deg); }
+}
+
+/* Mobile-specific optimizations */
+@media (max-width: 360px) {
+    .mobile-content {
+        padding: 1.5rem 0.8rem;
+    }
+    
+    .mobile-title {
+        font-size: 2.4rem;
+    }
+    
+    .mobile-subtitle {
+        font-size: 1rem;
+        margin-bottom: 2.5rem;
+    }
+    
+    .mobile-connect-button {
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+        min-width: 180px;
+    }
+    
+    .mobile-wifi-icon {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 1.5rem;
+    }
+    
+    .mobile-xilk-logo {
+        bottom: 1rem;
+        right: 1rem;
+    }
+    
+    .mobile-xilk-triangle {
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-bottom: 12px solid #00ff00;
+    }
+    
+    .mobile-xilk-text {
+        font-size: 0.8rem;
+    }
+    
+    .mobile-center-xilk-triangle {
+        border-left: 4px solid transparent;
+        border-right: 4px solid transparent;
+        border-bottom: 6px solid #00ff00;
+    }
+    
+    .mobile-center-xilk-text {
+        font-size: 0.6rem;
+    }
+}
+
+/* Landscape mobile optimizations */
+@media (max-height: 500px) and (orientation: landscape) {
+    .mobile-content {
+        padding: 1rem;
+    }
+    
+    .mobile-wifi-icon {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 1rem;
+    }
+    
+    .mobile-title {
+        font-size: 2rem;
+        margin-bottom: 0.3rem;
+    }
+    
+    .mobile-subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .mobile-connect-button {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+    
+    .mobile-hint {
+        display: none;
+    }
+    
+    .mobile-xilk-logo {
+        bottom: 0.8rem;
+        right: 0.8rem;
+    }
+    
+    .mobile-center-xilk-triangle {
+        border-left: 3px solid transparent;
+        border-right: 3px solid transparent;
+        border-bottom: 5px solid #00ff00;
+    }
+    
+    .mobile-center-xilk-text {
+        font-size: 0.5rem;
+    }
+}
+
+/* High DPI mobile screens */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .mobile-glitter {
+        width: 2px;
+        height: 2px;
+    }
+    
+    .mobile-hint-dot {
+        width: 6px;
+        height: 6px;
+    }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .mobile-wifi-icon,
+    .mobile-title,
+    .mobile-glitter,
+    .mobile-wave,
+    .mobile-hint-dot,
+    .mobile-xilk-triangle,
+    .mobile-button-icon {
+        animation: none;
+    }
+    
+    .mobile-connect-button:active,
+    .mobile-confirm-button:active {
+        transform: none;
+    }
+} 

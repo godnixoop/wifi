@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#000000">
+    <title>WiFi Connect</title>
+    <link rel="stylesheet" href="mobile-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="mobile-container">
+        <!-- Mobile-optimized background -->
+        <div class="mobile-bg">
+            <div class="mobile-glitter"></div>
+            <div class="mobile-glitter"></div>
+            <div class="mobile-glitter"></div>
+            <div class="mobile-glitter"></div>
+            <div class="mobile-glitter"></div>
+            <div class="mobile-glitter"></div>
+            <div class="mobile-glitter"></div>
+            <div class="mobile-glitter"></div>
+            <div class="mobile-glitter"></div>
+            <div class="mobile-glitter"></div>
+        </div>
+
+        <!-- Mobile shooting stars -->
+        <div class="mobile-shooting-stars">
+            <div class="mobile-shooting-star">
+                <div class="mobile-shooting-star-trail"></div>
+            </div>
+            <div class="mobile-shooting-star">
+                <div class="mobile-shooting-star-trail"></div>
+            </div>
+            <div class="mobile-shooting-star">
+                <div class="mobile-shooting-star-trail"></div>
+            </div>
+            <div class="mobile-shooting-star">
+                <div class="mobile-shooting-star-trail"></div>
+            </div>
+            <div class="mobile-shooting-star">
+                <div class="mobile-shooting-star-trail"></div>
+            </div>
+        </div>
+
+        <!-- Mobile floating particles -->
+        <div class="mobile-floating-particles">
+            <div class="mobile-particle"></div>
+            <div class="mobile-particle"></div>
+            <div class="mobile-particle"></div>
+            <div class="mobile-particle"></div>
+            <div class="mobile-particle"></div>
+            <div class="mobile-particle"></div>
+        </div>
+
+        <!-- Mobile content -->
+        <div class="mobile-content">
+            <!-- Mobile WiFi icon -->
+            <div class="mobile-wifi-icon">
+                <div class="mobile-wave"></div>
+                <div class="mobile-wave"></div>
+                <div class="mobile-wave"></div>
+                <div class="mobile-wifi-center-xilk">
+                    <div class="mobile-center-xilk-triangle"></div>
+                    <span class="mobile-center-xilk-text">.xilk</span>
+                </div>
+            </div>
+            
+            <h1 class="mobile-title">WiFi Connect</h1>
+            <p class="mobile-subtitle">Tap to connect</p>
+            
+            <!-- Mobile connect button -->
+            <div class="mobile-button-container">
+                <button id="mobileConnectBtn" class="mobile-connect-button">
+                    <div class="mobile-button-inner">
+                        <span class="mobile-button-text">Connect</span>
+                        <div class="mobile-button-icon">📶</div>
+                    </div>
+                </button>
+            </div>
+
+            <!-- Mobile status -->
+            <div id="mobileStatus" class="mobile-status hidden">
+                <div class="mobile-status-content">
+                    <div class="mobile-status-icon"></div>
+                    <span class="mobile-status-text"></span>
+                </div>
+            </div>
+
+            <!-- Mobile device modal -->
+            <div id="mobileModal" class="mobile-modal hidden">
+                <div class="mobile-modal-content">
+                    <div class="mobile-modal-header">
+                        <h3>Device Info</h3>
+                        <button class="mobile-close-btn" id="mobileCloseBtn">×</button>
+                    </div>
+                    <div class="mobile-device-info">
+                        <div class="mobile-info-row">
+                            <span class="mobile-label">Device:</span>
+                            <span class="mobile-value" id="mobileDeviceName"></span>
+                        </div>
+                        <div class="mobile-info-row">
+                            <span class="mobile-label">Time:</span>
+                            <span class="mobile-value" id="mobileConnectionTime"></span>
+                        </div>
+                    </div>
+                    <button id="mobileConfirmBtn" class="mobile-confirm-button">
+                        <span>Connect Now</span>
+                        <div class="mobile-confirm-glow"></div>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile hint -->
+        <div class="mobile-hint">
+            <div class="mobile-hint-dot"></div>
+            <div class="mobile-hint-dot"></div>
+            <div class="mobile-hint-dot"></div>
+        </div>
+
+        <!-- Mobile .xilk logo - clickable for stats -->
+        <div class="mobile-xilk-logo" id="mobileXilkLogo" onclick="showMobilePinModal()">
+            <div class="mobile-xilk-triangle"></div>
+            <span class="mobile-xilk-text">.xilk</span>
+        </div>
+
+        <!-- Mobile PIN Modal -->
+        <div id="mobilePinModal" class="mobile-modal hidden">
+            <div class="mobile-modal-content mobile-pin-modal">
+                <h3>Enter PIN</h3>
+                <div class="mobile-pin-input-container">
+                    <input type="password" id="mobilePinInput" class="mobile-pin-input" maxlength="4" placeholder="****">
+                    <div class="mobile-pin-dots">
+                        <div class="mobile-pin-dot"></div>
+                        <div class="mobile-pin-dot"></div>
+                        <div class="mobile-pin-dot"></div>
+                        <div class="mobile-pin-dot"></div>
+                    </div>
+                </div>
+                <div class="mobile-pin-buttons">
+                    <button class="mobile-pin-btn" onclick="addMobilePinDigit('1')">1</button>
+                    <button class="mobile-pin-btn" onclick="addMobilePinDigit('2')">2</button>
+                    <button class="mobile-pin-btn" onclick="addMobilePinDigit('3')">3</button>
+                    <button class="mobile-pin-btn" onclick="addMobilePinDigit('4')">4</button>
+                    <button class="mobile-pin-btn" onclick="addMobilePinDigit('5')">5</button>
+                    <button class="mobile-pin-btn" onclick="addMobilePinDigit('6')">6</button>
+                    <button class="mobile-pin-btn" onclick="addMobilePinDigit('7')">7</button>
+                    <button class="mobile-pin-btn" onclick="addMobilePinDigit('8')">8</button>
+                    <button class="mobile-pin-btn" onclick="addMobilePinDigit('9')">9</button>
+                    <button class="mobile-pin-btn" onclick="addMobilePinDigit('0')">0</button>
+                    <button class="mobile-pin-btn mobile-clear-btn" onclick="clearMobilePin()">C</button>
+                    <button class="mobile-pin-btn mobile-enter-btn" onclick="submitMobilePin()">✓</button>
+                </div>
+                <button class="mobile-close-btn" onclick="hideMobilePinModal()">×</button>
+            </div>
+        </div>
+
+        <!-- Mobile Statistics Modal -->
+        <div id="mobileStatsModal" class="mobile-modal hidden">
+            <div class="mobile-modal-content mobile-stats-modal">
+                <div class="mobile-stats-header">
+                    <h3>Connection Statistics</h3>
+                    <button class="mobile-close-btn" onclick="hideMobileStatsModal()">×</button>
+                </div>
+                <div class="mobile-stats-content">
+                    <div class="mobile-stats-summary">
+                        <div class="mobile-stat-card">
+                            <div class="mobile-stat-number" id="mobileTotalConnections">0</div>
+                            <div class="mobile-stat-label">Total Connections</div>
+                        </div>
+                        <div class="mobile-stat-card">
+                            <div class="mobile-stat-number" id="mobileTodayConnections">0</div>
+                            <div class="mobile-stat-label">Today</div>
+                        </div>
+                        <div class="mobile-stat-card">
+                            <div class="mobile-stat-number" id="mobileUniqueDevices">0</div>
+                            <div class="mobile-stat-label">Unique Devices</div>
+                        </div>
+                    </div>
+                    <div class="mobile-stats-table">
+                        <h4>Recent Connections</h4>
+                        <div class="mobile-table-container">
+                            <table id="mobileConnectionsTable">
+                                <thead>
+                                    <tr>
+                                        <th>Device</th>
+                                        <th>Time</th>
+                                        <th>Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="mobileConnectionsTableBody">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="mobile-stats-actions">
+                        <button class="mobile-action-btn" onclick="exportMobileData()">Export Data</button>
+                        <button class="mobile-action-btn mobile-clear-btn" onclick="clearAllMobileData()">Clear All</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile safe area spacer -->
+        <div class="mobile-safe-area"></div>
+    </div>
+
+    <script src="mobile-script.js"></script>
+</body>
+</html> 

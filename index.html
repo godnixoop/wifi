@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>WiFi Connect</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Background glitter effect -->
+        <div class="glitter-container">
+            <div class="glitter"></div>
+            <div class="glitter"></div>
+            <div class="glitter"></div>
+            <div class="glitter"></div>
+            <div class="glitter"></div>
+            <div class="glitter"></div>
+            <div class="glitter"></div>
+            <div class="glitter"></div>
+            <div class="glitter"></div>
+            <div class="glitter"></div>
+            <div class="glitter"></div>
+            <div class="glitter"></div>
+            <div class="glitter"></div>
+            <div class="glitter"></div>
+            <div class="glitter"></div>
+            <div class="glitter"></div>
+            <div class="glitter"></div>
+            <div class="glitter"></div>
+            <div class="glitter"></div>
+            <div class="glitter"></div>
+        </div>
+        
+        <!-- Main content -->
+        <div class="content">
+            <div class="logo">
+                <div class="wifi-icon">
+                    <div class="wifi-wave"></div>
+                    <div class="wifi-wave"></div>
+                    <div class="wifi-wave"></div>
+                    <div class="wifi-center-xilk">
+                        <div class="center-xilk-triangle"></div>
+                        <span class="center-xilk-text">.xilk</span>
+                    </div>
+                </div>
+            </div>
+            
+            <h1 class="title">WiFi Connect</h1>
+            <p class="subtitle">Seamless connection in one tap</p>
+            
+            <div class="connect-button-container">
+                <button id="connectBtn" class="connect-button">
+                    <span class="button-text">Connect to WiFi</span>
+                    <div class="button-glow"></div>
+                </button>
+            </div>
+            
+            <!-- Connection status -->
+            <div id="status" class="status hidden">
+                <div class="status-content">
+                    <div class="status-icon"></div>
+                    <span class="status-text"></span>
+                </div>
+            </div>
+
+            <!-- Device info modal -->
+            <div id="deviceModal" class="modal hidden">
+                <div class="modal-content">
+                    <h3>Device Information</h3>
+                    <div class="device-info">
+                        <p><strong>Device:</strong> <span id="deviceName"></span></p>
+                        <p><strong>Browser:</strong> <span id="userAgent"></span></p>
+                        <p><strong>Connection Time:</strong> <span id="connectionTime"></span></p>
+                    </div>
+                    <button id="confirmBtn" class="confirm-button">Confirm Connection</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Subtle hint animation -->
+        <div class="hint">
+            <div class="hint-dot"></div>
+            <div class="hint-dot"></div>
+            <div class="hint-dot"></div>
+        </div>
+
+        <!-- .xilk logo - clickable for stats -->
+        <div class="xilk-logo" id="xilkLogo" onclick="showPinModal()">
+            <div class="xilk-triangle"></div>
+            <span class="xilk-text">.xilk</span>
+        </div>
+    </div>
+    
+    <!-- PIN Modal -->
+    <div id="pinModal" class="modal hidden">
+        <div class="modal-content pin-modal">
+            <h3>Enter PIN</h3>
+            <div class="pin-input-container">
+                <input type="password" id="pinInput" class="pin-input" maxlength="4" placeholder="****">
+                <div class="pin-dots">
+                    <div class="pin-dot"></div>
+                    <div class="pin-dot"></div>
+                    <div class="pin-dot"></div>
+                    <div class="pin-dot"></div>
+                </div>
+            </div>
+            <div class="pin-buttons">
+                <button class="pin-btn" onclick="addPinDigit('1')">1</button>
+                <button class="pin-btn" onclick="addPinDigit('2')">2</button>
+                <button class="pin-btn" onclick="addPinDigit('3')">3</button>
+                <button class="pin-btn" onclick="addPinDigit('4')">4</button>
+                <button class="pin-btn" onclick="addPinDigit('5')">5</button>
+                <button class="pin-btn" onclick="addPinDigit('6')">6</button>
+                <button class="pin-btn" onclick="addPinDigit('7')">7</button>
+                <button class="pin-btn" onclick="addPinDigit('8')">8</button>
+                <button class="pin-btn" onclick="addPinDigit('9')">9</button>
+                <button class="pin-btn" onclick="addPinDigit('0')">0</button>
+                <button class="pin-btn clear-btn" onclick="clearPin()">C</button>
+                <button class="pin-btn enter-btn" onclick="submitPin()">✓</button>
+            </div>
+            <button class="close-btn" onclick="hidePinModal()">×</button>
+        </div>
+    </div>
+    
+    <!-- Statistics Modal -->
+    <div id="statsModal" class="modal hidden">
+        <div class="modal-content stats-modal">
+            <div class="stats-header">
+                <h3>Connection Statistics</h3>
+                <button class="close-btn" onclick="hideStatsModal()">×</button>
+            </div>
+            <div class="stats-content">
+                <div class="stats-summary">
+                    <div class="stat-card">
+                        <div class="stat-number" id="totalConnections">0</div>
+                        <div class="stat-label">Total Connections</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="todayConnections">0</div>
+                        <div class="stat-label">Today</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="uniqueDevices">0</div>
+                        <div class="stat-label">Unique Devices</div>
+                    </div>
+                </div>
+                <div class="stats-table">
+                    <h4>Recent Connections</h4>
+                    <div class="table-container">
+                        <table id="connectionsTable">
+                            <thead>
+                                <tr>
+                                    <th>Device</th>
+                                    <th>Time</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody id="connectionsTableBody">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="stats-actions">
+                    <button class="action-btn" onclick="exportData()">Export Data</button>
+                    <button class="action-btn clear-btn" onclick="clearAllData()">Clear All</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html> 
